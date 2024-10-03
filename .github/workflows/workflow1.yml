@@ -1,9 +1,9 @@
 
-on: this is first workflow
-   push:
+on: This is First my workflow
+  push:
     branches:
       - main
-   pull-request:
+  pull-request:
     branches:
       - main
 
