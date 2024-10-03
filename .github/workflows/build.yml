@@ -1,0 +1,45 @@
+            git fetch origin $GITHUB-BASE-REF --depth=1
+
+        fi
+
+
+
+   check_generated_files:
+
+     name: 'Check if generated files are up to date'
+
+    # Don't use ubuntu-latest but a specific version to make the job
+
+     runs-on: ubuntu-22.04
+
+     timeout-minutes: 60
+
+     needs: check_source
+     steps:
+
+     - uses: actions/checkout@v4
+     - uses: actions/setup-python@v5
+
+       with:
+         python-version: '3.x'
+
+
+     - name: Runner image version
+
+       run: echo "IMAGE_VERSION=${ImageVersion}" >> $GITHUB_ENV
+
+     - name: Restore config.cache
+
+     - uses: actions/cache@v4
+
+       with:
+
+         path: config.cache
+         key: ${{ github.job }}-${{ runner.os }}-${{ env.IMAGE_VERSION }}-${{ needs.check_source.outputs.config_hash }}-${{ env.pythonLocation }}
+
+
+
+
+
+"build.yml" 71L, 1481B                                                                                                                                   68,8          Bot
+
