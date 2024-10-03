@@ -2,7 +2,6 @@
 on: This is First my workflow
   push:
   pull-request:
-    branches:
     
 jobs:
   hello:
