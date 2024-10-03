@@ -1,22 +1,26 @@
-            git fetch origin $GITHUB-BASE-REF --depth=1
-
-        fi
-
-
-
-   check_generated_files:
-
-     name: 'Check if generated files are up to date'
-
-    # Don't use ubuntu-latest but a specific version to make the job
-
-     runs-on: ubuntu-22.04
-
-     timeout-minutes: 60
-
-     needs: check_source
-     steps:
-
+name:
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow-dispatch:
+  
+jobs:
+  check_source:
+    name: 'Change detection on code'       
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+      - uses: actions/checkout@v2
+        
+  check_generated_files:
+    name: 'check if generated files are up to date'
+    runs-on: ubuntu-22.04
+    timeout-minutes: 60
+    needs: check_source
+    
+    steps:
      - uses: actions/checkout@v4
      - uses: actions/setup-python@v5
 
