@@ -11,8 +11,8 @@ jobs:
     name: 'Change detection on code'       
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
       - uses: actions/checkout@v2
+      - name: Checkout code
         
   check_generated_files:
     name: 'check if generated files are up to date'
