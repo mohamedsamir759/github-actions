@@ -18,6 +18,6 @@ jobs:
         shell: bash
   goodbye:
     runs-on: ubuntu-latest
-      - name: world
+      - name: goodbye
         run: echo "goodbye world"
         shell: bash
