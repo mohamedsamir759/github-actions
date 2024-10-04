@@ -1,9 +1,7 @@
 name: Build and Push Docker Image
-
 on:
   push:
     branches: [main]
-
   pull_request:
     branches: [main]
 
@@ -19,8 +17,8 @@ jobs:
     name: 'this job login to dockerhub to push image'
     runs-on:  ubunnntu-latest
     steps:
-      - name: Log in to Docker Hub
       - uses: docker/login-action@v1
+      - name: Log in to Docker Hub
         with:
            username: ${{ secrets.DOCKERHUB_USERNAME }}
            password: ${{ secrets.DOCKERHUB_TOKEN }}
