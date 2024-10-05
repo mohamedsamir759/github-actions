@@ -1,3 +1,3 @@
-FROM nginx:latest
+FROM httpd:latest
 RUN apt update -y 
-EXPOSE 8080
+EXPOSE 8888
