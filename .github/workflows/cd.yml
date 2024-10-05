@@ -1,14 +1,11 @@
-name: Build and Push Docker Image
+name: kubernetes Deployment
 on:
-  push:
-    branches: [main]
   pull_request:
-    branches: [main]
+    branches: [med]
   workflow_dispatch:
 jobs:
-  build-and-push:
+  deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
@@ -26,3 +23,4 @@ jobs:
         run: |
           docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/$REPOSITORY:$IMAGE_TAG .
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/$REPOSITORY:$IMAGE_TAG
+          kubectl apply -n deploy-app-k8s -f k8s/
