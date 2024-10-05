@@ -1,3 +1,3 @@
 FROM httpd:latest
 RUN apt update -y 
-EXPOSE 8888
+EXPOSE 8080
