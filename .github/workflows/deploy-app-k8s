@@ -18,4 +18,7 @@ spec:
     spec:
       containers:
       - image: mohamedsamir759/httpd
-        name: deploymentapp
+        name: projapp
+      - containerport: "8888"
+
+         
