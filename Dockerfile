@@ -1,3 +1,3 @@
-FROM mohamedsamir759/httpd:latest
+FROM httpd
 RUN apt update -y 
 EXPOSE 8080
