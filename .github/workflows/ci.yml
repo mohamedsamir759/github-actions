@@ -44,6 +44,9 @@ jobs:
         run: |
 
           docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/$REPOSITORY:$IMAGE_TAG .
-
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/$REPOSITORY:$IMAGE_TAG
           docker run -d --name cont${IMAGE_TAG} -p 80:80 $REPOSITORY:$IMAGE_TAG
+          docker stop cont
+          docker rm cont
+          docker run -d --name cont${IMAGE_TAG} -p 80:80 $REPOSITORY:$IMAGE_TAG
+
