@@ -1,3 +1,3 @@
-FROM docker:v1
+FROM docker:latest
 COPY index.html /usr/local/apache2/htdocs
-RUN apt update -y 
+RUN apt update -y
