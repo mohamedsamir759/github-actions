@@ -2,43 +2,31 @@ name: Build and Push Docker Image
 on:
 
   push:
-
     branches: [main]
-
   pull_request:
-
     branches: [main]
 
 jobs:
 
   build-and-push:
-
     runs-on: ubuntu-latest
 
     steps:
 
       - name: Checkout code
-
         uses: actions/checkout@v2
 
-
       - name: Log in to Docker Hub
-
         uses: docker/login-action@v1
-
         with:
 
           username: ${{ secrets.DOCKERHUB_USERNAME }}
-
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-
 
       - name: Build and push Docker image
 
         env:
-
           REPOSITORY: nginx
-
           IMAGE_TAG: latest
 
         run: |
@@ -48,5 +36,5 @@ jobs:
           docker run -d --name cont${IMAGE_TAG} -p 80:80 $REPOSITORY:$IMAGE_TAG
           docker stop cont
           docker rm cont
-          docker run -d --name cont${IMAGE_TAG} -p 80:80 $REPOSITORY:$IMAGE_TAG
+          docker run -d --name cont -p 80:80 $REPOSITORY:$IMAGE_TAG
 
