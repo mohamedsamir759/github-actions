@@ -22,12 +22,12 @@ jobs:
       - name: Build and push Docker image
         env:
           REPOSITORY: docker
-          BUILD_NYMBER: v1
+          BUILD-NUMBER: latest
           
         run: |
           docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/$REPOSITORY:${BUILD_NUMBER} .
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/$REPOSITORY:${BUILD_NUMBER}
-          docker run -d --name cont${BUILD_NUMBER} -p 80:80 $REPOSITORY:v${BUILD_NUMBER}
+          docker run -d --name cont${BUILD_NUMBER} -p 80:80 $REPOSITORY:${BUILD_NUMBER}
           #new commit
           
           
