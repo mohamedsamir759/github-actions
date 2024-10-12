@@ -17,5 +17,5 @@ spec:
         app: k8s
     spec:
       containers:
-      - image: mohamedsamir759/httpd:latest
+      - image: mohamedsamir759/httpd:v1
         name: httpd
