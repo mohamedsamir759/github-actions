@@ -21,15 +21,13 @@ jobs:
 
       - name: Build and push Docker image
         env:
-          REPOSITORY: httpd
-          IMAGE_TAG: latest
+          REPOSITORY: docker
+          BUILD_NYMBER: v1
           
         run: |
-          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/$REPOSITORY:$IMAGE_TAG .
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/$REPOSITORY:$IMAGE_TAG
-          docker run -d --name proj_cont${IMAGE_TAG} -p 80:80 $REPOSITORY:$IMAGE_TAG
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/$REPOSITORY:${BUILD_NUMBER} .
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/$REPOSITORY:${BUILD_NUMBER}
+          docker run -d --name cont${BUILD_NUMBER} -p 80:80 $REPOSITORY:v${BUILD_NUMBER}
           #new commit
-          docker stop project_cont
-          docker rm project_cont
-          docker run -d --name proj_cont${IMAGE_TAG} -p 80:80 $REPOSITORY:$IMAGE_TAG
+          
           
