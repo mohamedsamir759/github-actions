@@ -39,8 +39,7 @@ jobs:
           docker rm cont
           docker run -d --name cont${IMAGE_TAG} -p 80:80 $REPOSITORY:$IMAGE_TAG
           # new commit with new env variable var
-          var=$((${IMAGE_TAG}-1))
-          docker stop cont$var
-          docker rm cont$var
+          docker stop cont$((${IMAGE_TAG}-1))
+          docker rm cont$((${IMAGE_TAG}-1))
           docker run -d --name cont${IMAGE_TAG} -p 80:80 $REPOSITORY:$IMAGE_TAG
 
