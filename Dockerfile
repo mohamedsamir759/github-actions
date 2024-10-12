@@ -1,3 +1,3 @@
-FROM httpd:v1
+FROM httpd:latest
 COPY index.html /usr/local/apache2/htdocs
 RUN apt update -y 
