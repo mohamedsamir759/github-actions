@@ -34,12 +34,4 @@ jobs:
           docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/$REPOSITORY:$IMAGE_TAG .
           docker push ${{ secrets.DOCKERHUB_USERNAME }}/$REPOSITORY:$IMAGE_TAG
           docker run -d --name cont -p 80:80 $REPOSITORY:$IMAGE_TAG
-          # commit to stop and rm cont to create container cont with released version
-          docker stop cont
-          docker rm cont
-          docker run -d --name cont${IMAGE_TAG} -p 80:80 $REPOSITORY:$IMAGE_TAG
-          # new commit with new env variable var
-          docker stop cont$((${IMAGE_TAG}-1))
-          docker rm cont$((${IMAGE_TAG}-1))
-          docker run -d --name cont${IMAGE_TAG} -p 80:80 $REPOSITORY:$IMAGE_TAG
-
+                  
