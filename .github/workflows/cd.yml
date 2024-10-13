@@ -10,8 +10,6 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-# You need to Base64 encoded your kubeconfig file before adding it in github sercrets
-
     - name: Setup Kubeconfig
       run: |
         echo "${{ secrets.KUBECONFIG }}" | base64 --decode > kubeconfig
