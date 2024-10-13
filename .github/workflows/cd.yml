@@ -12,8 +12,10 @@ jobs:
 
     - name: Setup Kubeconfig
       run: |
+        mkdir ${HOME}/.kube
         echo "${{ secrets.KUBECONFIG }}" | base64 --decode > kubeconfig
-
+        cat ${HOME}/.kube/config
+        
     - name: Apply Kubernetes configurations
       run: |
         export KUBECONFIG=kubeconfig
